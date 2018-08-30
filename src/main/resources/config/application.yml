@@ -1,0 +1,49 @@
+---
+#默认配置
+spring:
+  profiles:
+    active: dev
+---
+spring: 
+  datasource:
+    name: mydb
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/demo
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  freemarker: 
+    allow-request-override: false
+    allow-session-override: false
+    cache: true
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    enabled: true  
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: true
+    prefer-file-system-access: false
+    suffix: .ftl
+    template-loader-path: classpath:/templates/
+    settings: 
+      template_update_delay: 0
+      default_encoding: UTF-8
+      classic_compatible: true 
+    order: 1
+mybatis:   
+  mapper-locations: classpath*:/mybatis/mapper-*.xml
+  type-aliases-package: com.sf.**.domain
+
+#健康监控，http://localhost:8400/health查看
+management:  
+  port: 8400
+  
+#设置项目信息，@xxx.xxx@表达式从pom获取，http://localhost:8400/info查看
+info:  
+  app:  
+    name: "@project.name@"   
+    description: "@project.description@"  
+    version: "@project.version@"  
+    spring-boot-version: "@project.parent.version@"
+  

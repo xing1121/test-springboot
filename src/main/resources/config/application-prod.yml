@@ -1,0 +1,7 @@
+---
+#生产环境配置
+spring:
+  profiles: prod
+
+server:
+  port: 8082
